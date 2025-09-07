@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AptShine • Apartment Cleaning in Chicago</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <meta
+      name="description"
+      content="AptShine provides trusted apartment and condo cleaning in Chicago with clear pricing and easy online booking."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>✨</text></svg>"
+    />
+    <style>
+      :root {
+        --brand: #14b8a6; /* teal */
+        --brandDark: #0f766e;
+        --text: #0f172a; /* slate-900 */
+        --muted: #475569; /* slate-600 */
+        --bg: #ffffff;
+        --bgAlt: #f1f5f9; /* slate-100 */
+        --card: #ffffff;
+        --radius: 18px;
+        --shadow: 0 10px 25px rgba(2, 6, 23, 0.12);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+          "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        color: var(--text);
+        background: var(--bg);
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .container {
+        width: min(1100px, 92%);
+        margin-inline: auto;
+      }
+
+      /* header */
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: saturate(180%) blur(8px);
+        background: rgba(255, 255, 255, 0.85);
+        border-bottom: 1px solid rgba(2, 6, 23, 0.06);
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 0;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 800;
+      }
+      .brandLogo {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        object-fit: contain;
+        background: #000;
+      }
+      .brandName {
+        font-size: 22px;
+        letter-spacing: 0.2px;
+        color: var(--text);
+      }
+
+      .navLinks {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+      }
+      .navLinks a {
+        font-weight: 600;
+        color: var(--muted);
+      }
+      .navLinks a:hover {
+        color: var(--text);
+      }
+
+      .ctaBtn {
+        padding: 12px 18px;
+        border-radius: 999px;
+        background: var(--brand);
+        color: #fff;
+        font-weight: 700;
+        box-shadow: var(--shadow);
+        border: none;
+        cursor: pointer;
+      }
+      .ctaBtn:hover {
+        background: var(--brandDark);
+      }
+
+      /* hero */
+      .hero {
+        position: relative;
+        isolation: isolate;
+        padding: 84px 0 54px;
+        background: radial-gradient(
+            1200px 500px at 80% -10%,
+            rgba(20, 184, 166, 0.25),
+            transparent 60%
+          ),
+          radial-gradient(
+            900px 500px at 10% -10%,
+            rgba(20, 184, 166, 0.18),
+            transparent 60%
+          ),
+          linear-gradient(#ffffff, #ffffff);
+      }
+      .heroWrap {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 40px;
+        align-items: center;
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        color: var(--brand);
+        background: rgba(20, 184, 166, 0.1);
+        padding: 6px 12px;
+        border-radius: 999px;
+      }
+      .hero h1 {
+        font-size: 44px;
+        line-height: 1.05;
+        margin: 16px 0 12px;
+      }
+      .hero p {
+        font-size: 18px;
+        color: var(--muted);
+        margin: 0 0 24px;
+      }
+      .heroBullets {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px 18px;
+        margin: 16px 0 26px;
+      }
+      .bullet {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      .check {
+        width: 22px;
+        height: 22px;
+        border-radius: 999px;
+        background: var(--brand);
+        display: grid;
+        place-items: center;
+        color: #fff;
+        font-size: 14px;
+        flex: 0 0 22px;
+      }
+      .heroCard {
+        background: var(--card);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 20px;
+      }
+      .heroCard h3 {
+        margin: 0 0 10px;
+      }
+
+      .heroImg {
+        aspect-ratio: 1.1;
+        background: linear-gradient(120deg, #0b0b0b, #0e0e0f);
+        border-radius: 26px;
+        display: grid;
+        place-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .heroImg img {
+        width: 70%;
+        filter: drop-shadow(0 12px 28px rgba(20, 184, 166, 0.45));
+      }
+      .heroBadge {
+        position: absolute;
+        bottom: 16px;
+        left: 16px;
+        background: #111827;
+        color: #e5e7eb;
+        border: 1px solid rgba(229, 231, 235, 0.08);
+        padding: 10px 12px;
+        border-radius: 14px;
+        font-size: 14px;
+      }
+
+      /* trust bar */
+      .trust {
+        padding: 24px 0;
+        background: var(--bgAlt);
+        border-top: 1px solid rgba(2, 6, 23, 0.06);
+        border-bottom: 1px solid rgba(2, 6, 23, 0.06);
+      }
+      .trustWrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        justify-content: center;
+        align-items: center;
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      /* pricing */
+      .section {
+        padding: 70px 0;
+      }
+      .section h2 {
+        font-size: 34px;
+        margin: 0 0 10px;
+      }
+      .section p.lead {
+        color: var(--muted);
+        margin: 0 0 28px;
+      }
+
+      .pricingGrid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+      }
+      .priceCard {
+        background: var(--card);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 22px;
+        display: flex;
+        flex-direction: column;
+      }
+      .priceTop {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 6px;
+      }
+      .priceName {
+        font-weight: 800;
+      }
+      .price {
+        font-size: 34px;
+        font-weight: 800;
+      }
+      .priceSmall {
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .featureList {
+        list-style: none;
+        margin: 14px 0 18px;
+        padding: 0;
+        display: grid;
+        gap: 8px;
+      }
+      .featureList li {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+      }
+      .bookBtn {
+        margin-top: auto;
+      }
+
+      /* services */
+      .servicesGrid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+      .serviceCard {
+        background: var(--card);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 22px;
+      }
+      .serviceIcon {
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        background: rgba(20, 184, 166, 0.12);
+        display: grid;
+        place-items: center;
+        color: var(--brand);
+        margin-bottom: 10px;
+      }
+
+      /* areas */
+      .areas {
+        background: var(--bgAlt);
+      }
+      .areasGrid {
+        columns: 2;
+        column-gap: 22px;
+      }
+      .chip {
+        display: inline-block;
+        background: #fff;
+        border: 1px solid rgba(2, 6, 23, 0.08);
+        border-radius: 999px;
+        padding: 8px 12px;
+        margin: 0 8px 12px 0;
+        font-weight: 600;
+      }
+
+      /* reviews */
+      .reviewsGrid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+      .review {
+        background: var(--card);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 22px;
+      }
+      .stars {
+        color: #fbbf24;
+      }
+
+      /* faq */
+      .faqItem {
+        border: 1px solid rgba(2, 6, 23, 0.08);
+        border-radius: 14px;
+        margin-bottom: 12px;
+        overflow: hidden;
+      }
+      .faqQ {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 18px;
+        background: #fff;
+        cursor: pointer;
+        font-weight: 700;
+      }
+      .faqA {
+        padding: 0 18px 16px;
+        color: var(--muted);
+        display: none;
+      }
+
+      /* contact */
+      .contact {
+        background: linear-gradient(
+          180deg,
+          rgba(20, 184, 166, 0.1),
+          transparent
+        );
+      }
+      .contactWrap {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 22px;
+      }
+      .contactCard {
+        background: var(--card);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 22px;
+      }
+      .input {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid rgba(2, 6, 23, 0.12);
+        border-radius: 12px;
+        font-family: inherit;
+        font-size: 16px;
+      }
+      .twoCol {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      /* footer */
+      .footer {
+        padding: 24px 0;
+        color: var(--muted);
+        border-top: 1px solid rgba(2, 6, 23, 0.06);
+      }
+
+      /* responsive */
+      @media (max-width: 1000px) {
+        .heroWrap {
+          grid-template-columns: 1fr;
+        }
+        .pricingGrid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .servicesGrid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .reviewsGrid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .contactWrap {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (max-width: 640px) {
+        .navLinks {
+          display: none;
+        }
+        .pricingGrid {
+          grid-template-columns: 1fr;
+        }
+        .servicesGrid {
+          grid-template-columns: 1fr;
+        }
+        .reviewsGrid {
+          grid-template-columns: 1fr;
+        }
+        .areasGrid {
+          columns: 1;
+        }
+        .hero h1 {
+          font-size: 36px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- header -->
+    <header class="header">
+      <div class="container nav">
+        <a class="brand" href="#top">
+          <!-- Put your logo file next to this html as logo.png -->
+          <img src="logo.png" alt="AptShine logo" class="brandLogo" />
+          <span class="brandName">AptShine</span>
+        </a>
+        <nav class="navLinks">
+          <a href="#pricing">Pricing</a>
+          <a href="#included">Services</a>
+          <a href="#areas">Areas</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#faq">FAQ</a>
+          <a
+            href="https://app.acuityscheduling.com/schedule.php?owner=36849488"
+            target="_blank"
+            rel="noopener"
+            class="ctaBtn"
+            >Book Now</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- hero -->
+    <section class="hero" id="top">
+      <div class="container heroWrap">
+        <div>
+          <span class="eyebrow">Chicago apartment cleaning</span>
+          <h1>Five star shine with simple pricing and instant booking</h1>
+          <p>
+            Trusted pros for apartments and condos across Chicago. Insured
+            cleaners. Supplies included. Satisfaction guaranteed.
+          </p>
+          <div class="heroBullets">
+            <div class="bullet">
+              <span class="check">✓</span><span>Same week availability</span>
+            </div>
+            <div class="bullet">
+              <span class="check">✓</span><span>Eco friendly products</span>
+            </div>
+            <div class="bullet">
+              <span class="check">✓</span
+              ><span>Background checked cleaners</span>
+            </div>
+            <div class="bullet">
+              <span class="check">✓</span
+              ><span>Transparent rates no surprises</span>
+            </div>
+          </div>
+          <a
+            class="ctaBtn"
+            href="https://app.acuityscheduling.com/schedule.php?owner=36849488"
+            target="_blank"
+            rel="noopener"
+            >Book now</a
+          >
+        </div>
+        <div class="heroImg" style="background: none; box-shadow: none">
+          <img
+            src="hero.png"
+            alt="Bright Chicago apartment with skyline view after AptShine cleaning service"
+            style="width: 100%; border-radius: 20px; object-fit: cover"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- trust bar -->
+    <section class="trust">
+      <div class="container trustWrap">
+        <span>Lakeview</span>
+        <span>River North</span>
+        <span>West Loop</span>
+        <span>Streeterville</span>
+        <span>Lincoln Park</span>
+        <span>South Loop</span>
+        <span>Wicker Park</span>
+      </div>
+    </section>
+
+    <!-- pricing -->
+
+    <section class="section" id="pricing">
+      <div class="container">
+        <h2>Services and pricing</h2>
+        <p class="lead">These match your live Acuity appointment types.</p>
+        <div class="pricingGrid">
+          <div class="priceCard">
+            <div class="priceTop">
+              <span class="priceName">Studio</span
+              ><span class="price">$125</span>
+            </div>
+            <div class="priceSmall">Apartment or condo studio</div>
+            <ul class="featureList">
+              <li>
+                <span class="check">✓</span
+                ><span>Kitchen bath living area</span>
+              </li>
+              <li>
+                <span class="check">✓</span><span>Floors dusting trash</span>
+              </li>
+              <li>
+                <span class="check">✓</span><span>Supplies included</span>
+              </li>
+            </ul>
+            <a
+              href="https://app.acuityscheduling.com/schedule.php?owner=36849488&appointmentType=83085048"
+              target="_blank"
+              rel="noopener"
+              class="ctaBtn bookBtn"
+              >Book Studio</a
+            >
+          </div>
+          <div class="priceCard">
+            <div class="priceTop">
+              <span class="priceName">1 bed 1 bath</span
+              ><span class="price">$175</span>
+            </div>
+            <div class="priceSmall">One bedroom one bathroom</div>
+            <ul class="featureList">
+              <li>
+                <span class="check">✓</span><span>Kitchen bedroom living</span>
+              </li>
+              <li>
+                <span class="check">✓</span
+                ><span>Bathroom scrub and detail</span>
+              </li>
+              <li>
+                <span class="check">✓</span><span>Eco friendly products</span>
+              </li>
+            </ul>
+            <a
+              href="https://app.acuityscheduling.com/schedule.php?owner=36849488&appointmentType=83085061"
+              target="_blank"
+              rel="noopener"
+              class="ctaBtn bookBtn"
+              >Book 1 bed</a
+            >
+          </div>
+          <div class="priceCard">
+            <div class="priceTop">
+              <span class="priceName">2 bed 1 bath</span
+              ><span class="price">$225</span>
+            </div>
+            <div class="priceSmall">Two bedrooms one bathroom</div>
+            <ul class="featureList">
+              <li>
+                <span class="check">✓</span><span>All rooms cleaned</span>
+              </li>
+              <li>
+                <span class="check">✓</span
+                ><span>Baseboards and high touch</span>
+              </li>
+              <li><span class="check">✓</span><span>Pet friendly</span></li>
+            </ul>
+            <a
+              href="https://app.acuityscheduling.com/schedule.php?owner=36849488&appointmentType=83085091"
+              target="_blank"
+              rel="noopener"
+              class="ctaBtn bookBtn"
+              >Book 2 bed 1 bath</a
+            >
+          </div>
+          <div class="priceCard">
+            <div class="priceTop">
+              <span class="priceName">2 bed 2 bath</span
+              ><span class="price">$275</span>
+            </div>
+            <div class="priceSmall">Two bedrooms two bathrooms</div>
+            <ul class="featureList">
+              <li>
+                <span class="check">✓</span><span>Full home cleaning</span>
+              </li>
+              <li><span class="check">✓</span><span>Stainless polish</span></li>
+              <li>
+                <span class="check">✓</span
+                ><span>Optional deep detail add ons</span>
+              </li>
+            </ul>
+            <a
+              href="https://app.acuityscheduling.com/schedule.php?owner=36849488&appointmentType=83085140"
+              target="_blank"
+              rel="noopener"
+              class="ctaBtn bookBtn"
+              >Book 2 bed 2 bath</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- included -->
+    <section class="section" id="included">
+      <div class="container">
+        <h2>What is included</h2>
+        <p class="lead">
+          Every visit includes kitchen bath living and bedroom care.
+        </p>
+        <div class="servicesGrid">
+          <div class="serviceCard">
+            <div class="serviceIcon">🧼</div>
+            <h3>Kitchen</h3>
+            <p>
+              Countertops sink outside appliances inside microwave cabinet
+              exteriors backsplashes floors
+            </p>
+          </div>
+          <div class="serviceCard">
+            <div class="serviceIcon">🛁</div>
+            <h3>Bathroom</h3>
+            <p>
+              Shower tub grout mirror sink and fixtures toilet baseboards floors
+            </p>
+          </div>
+          <div class="serviceCard">
+            <div class="serviceIcon">🧹</div>
+            <h3>All rooms</h3>
+            <p>
+              Dust and wipe light switches door handles trim vacuum and mop make
+              beds take out trash
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- areas -->
+    <section class="section areas" id="areas">
+      <div class="container">
+        <h2>Neighborhoods we serve</h2>
+        <p class="lead">From the Loop to the lakefront and beyond</p>
+        <div class="areasGrid">
+          <span class="chip">Lakeview</span>
+          <span class="chip">River North</span>
+          <span class="chip">Streeterville</span>
+          <span class="chip">Gold Coast</span>
+          <span class="chip">Old Town</span>
+          <span class="chip">Lincoln Park</span>
+          <span class="chip">Loop</span>
+          <span class="chip">South Loop</span>
+          <span class="chip">West Loop</span>
+          <span class="chip">Wicker Park</span>
+          <span class="chip">Bucktown</span>
+          <span class="chip">Logan Square</span>
+          <span class="chip">Uptown</span>
+          <span class="chip">Edgewater</span>
+          <span class="chip">Bronzeville</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- reviews -->
+    <section class="section" id="reviews">
+      <div class="container">
+        <h2>Happy residents</h2>
+        <p class="lead">Real notes from Chicago renters and condo owners</p>
+        <div class="reviewsGrid">
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>
+              So easy to book and the place looked brand new. Loved the
+              stainless polish and towel fold.
+            </p>
+            <small>Emily in River North</small>
+          </div>
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>
+              They handled my move out clean and I got my deposit back. Worth
+              it.
+            </p>
+            <small>Marcus in West Loop</small>
+          </div>
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>
+              On time friendly and very detailed. Booking every other week now.
+            </p>
+            <small>Sara in Lincoln Park</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- faq -->
+    <section class="section" id="faq">
+      <div class="container">
+        <h2>FAQ</h2>
+        <div class="faqItem">
+          <div class="faqQ" onclick="toggleFaq(this)">
+            Do I need to be home?<span>+</span>
+          </div>
+          <div class="faqA">
+            No. Many clients let us in via front desk or lockbox. We can text
+            when finished.
+          </div>
+        </div>
+        <div class="faqItem">
+          <div class="faqQ" onclick="toggleFaq(this)">
+            What about supplies?<span>+</span>
+          </div>
+          <div class="faqA">
+            We bring eco friendly products and all tools. If you prefer a
+            product we can use yours.
+          </div>
+        </div>
+        <div class="faqItem">
+          <div class="faqQ" onclick="toggleFaq(this)">
+            Are you insured?<span>+</span>
+          </div>
+          <div class="faqA">
+            Yes. We carry full liability and can provide a COI for your building
+            if needed.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- contact and booking -->
+    <section class="section contact" id="contact">
+      <div
+        class="container contactWrap"
+        style="max-width: 1100px; margin: 0 auto; align-items: center"
+      >
+        <div class="contactCard" style="max-width: 640px; margin: 0 auto">
+          <h2 style="margin-top: 0">Have questions? Contact us</h2>
+          <p class="lead">
+            Tell us about your place and your preferred time. We reply fast.
+          </p>
+          <!-- Replace the action with your Formspree or backend endpoint -->
+          <form
+            action="https://formspree.io/f/xandlzpk"
+            method="POST"
+            onsubmit="document.getElementById('sent').style.display='block'; return validateForm()"
+          >
+            <!-- formspree config -->
+            <input type="hidden" name="_subject" value="New AptShine inquiry" />
+            <!-- honeypot to reduce spam -->
+            <input
+              type="text"
+              name="_gotcha"
+              style="display: none"
+              tabindex="-1"
+              autocomplete="off"
+            />
+
+            <div class="twoCol">
+              <input
+                class="input"
+                name="name"
+                placeholder="Full name"
+                required
+              />
+              <input
+                class="input"
+                name="email"
+                type="email"
+                placeholder="Email"
+                required
+              />
+            </div>
+            <div class="twoCol" style="margin-top: 12px">
+              <input class="input" name="phone" placeholder="Phone" required />
+              <input class="input" name="building" placeholder="Address" />
+            </div>
+            <div class="twoCol" style="margin-top: 12px">
+              <input
+                class="input"
+                name="bedrooms"
+                placeholder="Bedrooms"
+                required
+              />
+              <input
+                class="input"
+                name="bathrooms"
+                placeholder="Bathrooms"
+                required
+              />
+            </div>
+            <textarea
+              class="input"
+              name="notes"
+              rows="5"
+              placeholder="Please ask any questions here"
+              style="margin-top: 12px"
+            ></textarea>
+            <button
+              class="ctaBtn"
+              style="
+                margin-top: 12px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+              "
+              type="submit"
+            >
+              Send
+            </button>
+          </form>
+          <p
+            id="sent"
+            style="
+              display: none;
+              margin-top: 8px;
+              color: #0f766e;
+              font-weight: 700;
+              text-align: center;
+            "
+          >
+            Thanks — sent! Please check your inbox.
+          </p>
+        </div>
+        <div
+          class="contactCard"
+          style="
+            background: linear-gradient(140deg, #0f766e 0%, #14b8a6 100%);
+            color: #e6fffb;
+            max-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+          "
+        >
+          <h3 style="margin-top: 0">Contact</h3>
+          <p>
+            Text or Call Us:
+            <a href="sms:+13122100137" style="font-weight: 700; color: #fff"
+              >312 210 0137</a
+            >
+          </p>
+          <p>Service hours 9am to 9pm every day</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="footer">
+      <div
+        class="container"
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 16px;
+          flex-wrap: wrap;
+        "
+      >
+        <div style="display: flex; align-items: center; gap: 10px">
+          <img
+            src="logo.png"
+            alt="AptShine"
+            style="
+              width: 28px;
+              height: 28px;
+              border-radius: 6px;
+              background: #000;
+            "
+          />
+          <strong>AptShine</strong>
+          <span>© <span id="year"></span> All rights reserved</span>
+        </div>
+        <div style="display: flex; gap: 14px; align-items: center">
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+          <a href="#top">Back to top</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", (e) => {
+          const id = a.getAttribute("href");
+          const target = document.querySelector(id);
+          if (target) {
+            e.preventDefault();
+            window.scrollTo({ top: target.offsetTop - 70, behavior: "smooth" });
+          }
+        });
+      });
+
+      // quote calculator simple mock
+
+      // faq toggle
+      function toggleFaq(q) {
+        const a = q.nextElementSibling;
+        a.style.display = a.style.display === "block" ? "none" : "block";
+      }
+
+      // footer year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // basic form validation
+      function validateForm() {
+        return true;
+      }
+    </script>
+  </body>
+</html>
